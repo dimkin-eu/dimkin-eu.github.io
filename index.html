@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Dmitry Munda</title>
+ <style>
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ body { background: #0d1117; color: #c9d1d9; font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; }
+ a { color: #58a6ff; text-decoration: none; }
+ a:hover { text-decoration: underline; }
+ header { background: #161b22; border-bottom: 1px solid #30363d; padding: 48px 0; }
+ .header-inner { max-width: 800px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 36px; }
+ .avatar { width: 110px; height: 110px; border-radius: 50%; border: 3px solid #30363d; object-fit: cover; }
+ .header-text h1 { font-size: 2rem; color: #e6edf3; font-weight: 600; }
+ .header-text .subtitle { color: #8b949e; font-size: 1rem; margin: 6px 0 12px; }
+ .social-links { display: flex; gap: 12px; flex-wrap: wrap; }
+ .social-links a { color: #8b949e; font-size: 0.9rem; }
+ .social-links a:hover { color: #58a6ff; }
+ .callsign { display: inline-block; background: #21262d; border: 1px solid #30363d; color: #58a6ff; font-family: monospace; font-size: 0.85rem; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.08em; }
+ main { max-width: 800px; margin: 40px auto; padding: 0 24px; display: flex; flex-direction: column; gap: 32px; }
+ section { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 28px; }
+ section h2 { font-size: 0.8rem; font-weight: 600; color: #8b949e; border-bottom: 1px solid #30363d; padding-bottom: 10px; margin-bottom: 20px; letter-spacing: 0.1em; text-transform: uppercase; }
+ .intro p { color: #c9d1d9; line-height: 1.85; margin-bottom: 14px; }
+ .intro p:last-child { margin-bottom: 0; }
+ .now-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+ .now-item { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 14px 16px; }
+ .now-item .now-label { font-size: 0.72rem; color: #484f58; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+ .now-item .now-value { font-size: 0.9rem; color: #c9d1d9; }
+ .interests-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 14px; }
+ .interest-card { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 16px; }
+ .interest-card .icon { font-size: 1.6rem; margin-bottom: 8px; line-height: 1; }
+ .interest-card .icon img { width: 1.6rem; height: 1.6rem; object-fit: contain; display: block; }
+ .interest-card .name { font-size: 0.95rem; font-weight: 600; color: #e6edf3; margin-bottom: 4px; }
+ .interest-card .desc { font-size: 0.82rem; color: #8b949e; line-height: 1.5; }
+ .job { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #21262d; }
+ .job:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+ .job-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
+ .job-title { font-size: 0.95rem; font-weight: 600; color: #e6edf3; }
+ .job-company { color: #58a6ff; font-size: 0.9rem; }
+ .job-period { color: #8b949e; font-size: 0.82rem; white-space: nowrap; }
+ .job-desc { color: #8b949e; font-size: 0.88rem; margin-top: 6px; line-height: 1.7; }
+ .job-tags { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 5px; }
+ .tag { background: #21262d; border: 1px solid #30363d; color: #8b949e; font-size: 0.75rem; padding: 2px 7px; border-radius: 10px; }
+ .edu-item { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid #21262d; }
+ .edu-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+ .edu-degree { font-weight: 600; color: #e6edf3; font-size: 0.92rem; }
+ .edu-school { color: #58a6ff; font-size: 0.88rem; }
+ .cert-item { margin-bottom: 10px; }
+ .cert-name { font-weight: 600; color: #e6edf3; font-size: 0.9rem; }
+ .cert-issuer { color: #8b949e; font-size: 0.82rem; }
+ .map-wrap { border-radius: 8px; overflow: hidden; border: 1px solid #30363d; margin-top: 16px; }
+ .map-wrap iframe { display: block; width: 100%; height: 240px; border: none; filter: invert(90%) hue-rotate(180deg); }
+ .link-row { display: flex; gap: 12px; flex-wrap: wrap; }
+ .link-btn { background: #21262d; border: 1px solid #30363d; color: #c9d1d9; padding: 7px 14px; border-radius: 6px; font-size: 0.88rem; }
+ .link-btn:hover { border-color: #58a6ff; color: #58a6ff; text-decoration: none; }
+ footer { text-align: center; color: #484f58; font-size: 0.78rem; padding: 28px 24px; }
+ </style>
+</head>
+<body>
+ <header>
+ <div class="header-inner">
+ <img class="avatar" src="https://github.com/dimkin-eu.png" alt="Dmitry Munda">
+ <div class="header-text">
+ <h1>Dmitry Munda</h1>
+ <div class="subtitle">QA Automation &middot; Riga, Latvia</div>
+ <div class="social-links">
+ <a href="https://linkedin.com/in/dimkin-eu" target="_blank">LinkedIn</a>
+ <a href="https://github.com/dimkin-eu" target="_blank">GitHub</a>
+ <span class="callsign">YL3AMD</span>
+ </div>
+ </div>
+ </div>
+ </header>
+ <main>
+ <section class="intro">
+ <h2>Hey</h2>
+ <p>I started my QA career clicking through screens manually. Turns out, computers are better at that.</p>
+ <p>Twenty years later I'm building automation frameworks, leading QA teams, and specialising in the iGaming/Live Casino domain. My stack these days is TypeScript and Playwright, with contract testing across frontend and Scala backend services, WebSocket validation, Storybook, and GitLab CI/CD. Earlier chapters involved Java, Selenium, WebdriverIO, and Jenkins.</p>
+ <p>Beyond the keyboard I mentor QA engineers, run technical interviews, and try to automate things at home with the same enthusiasm I bring to work &mdash; sometimes more.</p>
+ </section>
+ <section>
+ <h2>Now</h2>
+ <div class="now-grid">
+ <div class="now-item"><div class="now-label">Working on</div><div class="now-value">iGaming test automation &amp; CI/CD at Proxy Live</div></div>
+ <div class="now-item"><div class="now-label">Tinkering with</div><div class="now-value">Home Assistant automations &amp; Raspberry Pi project</div></div>
+ <div class="now-item"><div class="now-label">On the turntable</div><div class="now-value">Whatever feels right this week</div></div>
+ <div class="now-item"><div class="now-label">On the trails</div><div class="now-value">Preparing for the next hiking route</div></div>
+ </div>
+ </section>
+ <section>
+ <h2>Things I tinker with</h2>
+ <div class="interests-grid">
+ <div class="interest-card"><div class="icon"><img src="https://www.home-assistant.io/images/favicon-192x192.png" alt="Home Assistant"></div><div class="name">Home Assistant</div><div class="desc">Smart home automation &mdash; because who wants to remember to turn off the lights</div></div>
+ <div class="interest-card"><div class="icon">&#129302;</div><div class="name">Arduino &amp; Raspberry Pi</div><div class="desc">Microcontrollers, single-board computers, sensors, and occasionally blinking LEDs</div></div>
+ <div class="interest-card"><div class="icon">&#128225;</div><div class="name">Ham Radio</div><div class="desc">Licensed amateur radio operator &mdash; call sign <strong style="color:#e6edf3">YL3AMD</strong></div></div>
+ <div class="interest-card"><div class="icon">&#9992;&#65039;</div><div class="name">Flightradar24</div><div class="desc">ADS-B feeder &mdash; contributing live aircraft data to the network</div></div>
+ <div class="interest-card"><div class="icon">&#128247;</div><div class="name">Photography</div><div class="desc">Mostly street and travel &mdash; Nikon in hand, looking for the right light</div></div>
+ <div class="interest-card" title="There is no dark side in the moon, really. Matter of fact, it's all dark. The only thing that makes it look light is the sun."><div class="icon">&#127925;</div><div class="name">Music &amp; Vinyl</div><div class="desc">Analogue sound in a digital world. The crackle is a feature, not a bug</div></div>
+ <div class="interest-card"><div class="icon">&#128296;</div><div class="name">DIY</div><div class="desc">If it's broken, fix it. If it's not broken, improve it</div></div>
+ <div class="interest-card"><div class="icon">&#128424;&#65039;</div><div class="name">3D Printing</div><div class="desc">Turning digital ideas into plastic reality, one failed print at a time</div></div>
+ <div class="interest-card"><div class="icon">&#127956;&#65039;</div><div class="name">Hiking</div><div class="desc">Offline mode. No stack traces, no pull requests, just trails</div></div>
+ </div>
+ </section>
+ <section>
+ <h2>Where I've been</h2>
+ <div class="job"><div class="job-header"><div><div class="job-title">Lead Automation QA Engineer</div><div class="job-company">Proxy Live Solutions&#8482;</div></div><div class="job-period">Apr 2022 &ndash; Present</div></div><div class="job-desc">Built E2E test automation from scratch as a founding team member. TypeScript + Playwright, contract testing across frontend and Scala backend, WebSocket validation, Storybook, GitLab CI/CD. Mentoring and technical interviews.</div><div class="job-tags"><span class="tag">TypeScript</span><span class="tag">Playwright</span><span class="tag">Contract Testing</span><span class="tag">WebSocket</span><span class="tag">GitLab CI/CD</span><span class="tag">Mentoring</span></div></div>
+ <div class="job"><div class="job-header"><div><div class="job-title">Senior Automation QA Engineer</div><div class="job-company">Proxy Live Solutions&#8482;</div></div><div class="job-period">Jan 2021 &ndash; Mar 2022</div></div><div class="job-desc">Established E2E automation from the ground up. TypeScript + Playwright, contract testing, GitLab CI/CD pipelines, Storybook component testing.</div><div class="job-tags"><span class="tag">TypeScript</span><span class="tag">Playwright</span><span class="tag">Contract Testing</span><span class="tag">Storybook</span></div></div>
+ <div class="job"><div class="job-header"><div><div class="job-title">QA Automation Engineer</div><div class="job-company">NetEnt</div></div><div class="job-period">Mar 2020 &ndash; Dec 2020</div></div><div class="job-desc">Part of the first Riga branch expanding NetEnt into Live Casino. TypeScript + WebdriverIO. Branch closed after NetEnt was acquired by Evolution Gaming.</div><div class="job-tags"><span class="tag">TypeScript</span><span class="tag">WebdriverIO</span><span class="tag">Contract Testing</span></div></div>
+ <div class="job"><div class="job-header"><div><div class="job-title">QA Automation Engineer</div><div class="job-company">Orange Sky Finance</div></div><div class="job-period">Dec 2019 &ndash; Feb 2020</div></div><div class="job-desc">Brief role outside iGaming. Worked on refactoring Java/Selenium test suites.</div><div class="job-tags"><span class="tag">Java</span><span class="tag">Selenium</span></div></div>
+ <div class="job"><div class="job-header"><div><div class="job-title">Automation Team Lead</div><div class="job-company">Evolution Gaming</div></div><div class="job-period">Dec 2013 &ndash; Dec 2019</div></div><div class="job-desc">Led QA automation for Live Casino. Java + Selenium, BrowserStack for mobile, Jenkins/Groovy pipelines. Maintained dual Flash/HTML5 coverage during company-wide migration. Mentoring.</div><div class="job-tags"><span class="tag">Java</span><span class="tag">Selenium</span><span class="tag">BrowserStack</span><span class="tag">Jenkins</span><span class="tag">Mentoring</span></div></div>
+ <div class="job"><div class="job-header"><div><div class="job-title">QA Engineer</div><div class="job-company">Evolution Gaming</div></div><div class="job-period">Oct 2012 &ndash; Nov 2013</div></div><div class="job-desc">Started in manual QA, moved into automation with Java and Selenium.</div><div class="job-tags"><span class="tag">Manual QA</span><span class="tag">Java</span><span class="tag">Selenium</span></div></div>
+ <div class="job"><div class="job-header"><div><div class="job-title">QA Engineer</div><div class="job-company">Vide Infra Group</div></div><div class="job-period">Jan 2011 &ndash; Oct 2012</div></div><div class="job-desc">Manual QA for web and iOS. First steps into Selenium automation. Hudson CI.</div><div class="job-tags"><span class="tag">Manual QA</span><span class="tag">Selenium</span><span class="tag">iOS</span></div></div>
+ </section>
+ <section>
+ <h2>Education</h2>
+ <div class="edu-item"><div class="edu-degree">MSc Computer Science</div><div class="edu-school">Latvijas Universit&#257;te</div></div>
+ <div class="edu-item"><div class="edu-degree">BSc Computer Science</div><div class="edu-school">Transport and Telecommunication Institute (TSI)</div></div>
+ </section>
+ <section>
+ <h2>Certifications</h2>
+ <div class="cert-item"><div class="cert-name">ISTQB&#174; Certified Tester, Foundation Level</div><div class="cert-issuer">iSQI GmbH &middot; Apr 2013</div></div>
+ <div class="cert-item"><div class="cert-name">CSM Certified Scrum Master</div><div class="cert-issuer">Scrum Alliance &middot; Jan 2014</div></div>
+ </section>
+ <section>
+ <h2>Find me</h2>
+ <div class="link-row">
+ <a class="link-btn" href="https://linkedin.com/in/dimkin-eu" target="_blank">LinkedIn</a>
+ <a class="link-btn" href="https://github.com/dimkin-eu" target="_blank">GitHub</a>
+ </div>
+ <div class="map-wrap">
+ <iframe
+ src="https://www.openstreetmap.org/export/embed.html?bbox=23.9%2C56.88%2C24.3%2C57.02&amp;layer=mapnik&amp;marker=56.946%2C24.106"
+ title="Riga, Latvia"
+ loading="lazy"
+ ></iframe>
+ </div>
+ </section>
+ </main>
+ <footer><p>Dmitry Munda &middot; Riga, Latvia &middot; 2026</p></footer>
+</body>
+</html>
