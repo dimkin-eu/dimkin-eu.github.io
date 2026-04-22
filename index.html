@@ -5,57 +5,92 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Dmitry Munda</title>
  <style>
+ :root {
+  --bg: #0d1117;
+  --text: #c9d1d9;
+  --accent: #58a6ff;
+  --surface: #161b22;
+  --border: #30363d;
+  --text-strong: #e6edf3;
+  --text-muted: #8b949e;
+  --surface-alt: #21262d;
+  --text-dim: #484f58;
+  --map-filter: invert(90%) hue-rotate(180deg);
+  color-scheme: dark;
+ }
+ [data-theme="light"] {
+  --bg: #ffffff;
+  --text: #1f2328;
+  --accent: #0969da;
+  --surface: #f6f8fa;
+  --border: #d0d7de;
+  --text-strong: #0d1117;
+  --text-muted: #656d76;
+  --surface-alt: #eaeef2;
+  --text-dim: #8c959f;
+  --map-filter: none;
+  color-scheme: light;
+ }
+
  * { margin: 0; padding: 0; box-sizing: border-box; }
- body { background: #0d1117; color: #c9d1d9; font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; }
- a { color: #58a6ff; text-decoration: none; }
+ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; }
+ a { color: var(--accent); text-decoration: none; }
  a:hover { text-decoration: underline; }
- header { background: #161b22; border-bottom: 1px solid #30363d; padding: 48px 0; }
+ header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 48px 0; }
  .header-inner { max-width: 800px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 36px; }
- .avatar { width: 110px; height: 110px; border-radius: 50%; border: 3px solid #30363d; object-fit: cover; }
- .header-text h1 { font-size: 2rem; color: #e6edf3; font-weight: 600; }
- .header-text .subtitle { color: #8b949e; font-size: 1rem; margin: 6px 0 12px; }
+ .avatar { width: 110px; height: 110px; border-radius: 50%; border: 3px solid var(--border); object-fit: cover; }
+ .header-text h1 { font-size: 2rem; color: var(--text-strong); font-weight: 600; }
+ .header-text .subtitle { color: var(--text-muted); font-size: 1rem; margin: 6px 0 12px; }
  .social-links { display: flex; gap: 12px; flex-wrap: wrap; }
- .social-links a { color: #8b949e; font-size: 0.9rem; }
- .social-links a:hover { color: #58a6ff; }
- .callsign { display: inline-block; background: #21262d; border: 1px solid #30363d; color: #58a6ff; font-family: monospace; font-size: 0.85rem; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.08em; }
+ .social-links a { color: var(--text-muted); font-size: 0.9rem; }
+ .social-links a:hover { color: var(--accent); }
+ .callsign { display: inline-block; background: var(--surface-alt); border: 1px solid var(--border); color: var(--accent); font-family: monospace; font-size: 0.85rem; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.08em; }
  main { max-width: 800px; margin: 40px auto; padding: 0 24px; display: flex; flex-direction: column; gap: 32px; }
- section { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 28px; }
- section h2 { font-size: 0.8rem; font-weight: 600; color: #8b949e; border-bottom: 1px solid #30363d; padding-bottom: 10px; margin-bottom: 20px; letter-spacing: 0.1em; text-transform: uppercase; }
- .intro p { color: #c9d1d9; line-height: 1.85; margin-bottom: 14px; }
+ section { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 28px; }
+ section h2 { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 20px; letter-spacing: 0.1em; text-transform: uppercase; }
+ .intro p { color: var(--text); line-height: 1.85; margin-bottom: 14px; }
  .intro p:last-child { margin-bottom: 0; }
  .now-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
- .now-item { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 14px 16px; }
- .now-item .now-label { font-size: 0.72rem; color: #484f58; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
- .now-item .now-value { font-size: 0.9rem; color: #c9d1d9; }
+ .now-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+ .now-item .now-label { font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+ .now-item .now-value { font-size: 0.9rem; color: var(--text); }
  .interests-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 14px; }
- .interest-card { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 16px; }
+ .interest-card { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
  .interest-card .icon { font-size: 1.6rem; margin-bottom: 8px; line-height: 1; }
  .interest-card .icon img { width: 1.6rem; height: 1.6rem; object-fit: contain; display: block; }
- .interest-card .name { font-size: 0.95rem; font-weight: 600; color: #e6edf3; margin-bottom: 4px; }
- .interest-card .desc { font-size: 0.82rem; color: #8b949e; line-height: 1.5; }
- .job { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #21262d; }
+ .interest-card .name { font-size: 0.95rem; font-weight: 600; color: var(--text-strong); margin-bottom: 4px; }
+ .interest-card .desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+ .job { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--surface-alt); }
  .job:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
  .job-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; }
- .job-title { font-size: 0.95rem; font-weight: 600; color: #e6edf3; }
- .job-company { color: #58a6ff; font-size: 0.9rem; }
- .job-period { color: #8b949e; font-size: 0.82rem; white-space: nowrap; }
- .job-desc { color: #8b949e; font-size: 0.88rem; margin-top: 6px; line-height: 1.7; }
+ .job-title { font-size: 0.95rem; font-weight: 600; color: var(--text-strong); }
+ .job-company { color: var(--accent); font-size: 0.9rem; }
+ .job-period { color: var(--text-muted); font-size: 0.82rem; white-space: nowrap; }
+ .job-desc { color: var(--text-muted); font-size: 0.88rem; margin-top: 6px; line-height: 1.7; }
  .job-tags { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 5px; }
- .tag { background: #21262d; border: 1px solid #30363d; color: #8b949e; font-size: 0.75rem; padding: 2px 7px; border-radius: 10px; }
- .edu-item { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid #21262d; }
+ .tag { background: var(--surface-alt); border: 1px solid var(--border); color: var(--text-muted); font-size: 0.75rem; padding: 2px 7px; border-radius: 10px; }
+ .edu-item { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--surface-alt); }
  .edu-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
- .edu-degree { font-weight: 600; color: #e6edf3; font-size: 0.92rem; }
- .edu-school { color: #58a6ff; font-size: 0.88rem; }
+ .edu-degree { font-weight: 600; color: var(--text-strong); font-size: 0.92rem; }
+ .edu-school { color: var(--accent); font-size: 0.88rem; }
  .cert-item { margin-bottom: 10px; }
- .cert-name { font-weight: 600; color: #e6edf3; font-size: 0.9rem; }
- .cert-issuer { color: #8b949e; font-size: 0.82rem; }
- .map-wrap { border-radius: 8px; overflow: hidden; border: 1px solid #30363d; margin-top: 16px; }
+ .cert-name { font-weight: 600; color: var(--text-strong); font-size: 0.9rem; }
+ .cert-issuer { color: var(--text-muted); font-size: 0.82rem; }
+ .map-wrap { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); margin-top: 16px; }
  .map-wrap iframe { display: block; width: 100%; height: 240px; border: none; filter: invert(90%) hue-rotate(180deg); }
  .link-row { display: flex; gap: 12px; flex-wrap: wrap; }
- .link-btn { background: #21262d; border: 1px solid #30363d; color: #c9d1d9; padding: 7px 14px; border-radius: 6px; font-size: 0.88rem; }
- .link-btn:hover { border-color: #58a6ff; color: #58a6ff; text-decoration: none; }
- footer { text-align: center; color: #484f58; font-size: 0.78rem; padding: 28px 24px; }
- </style>
+ .link-btn { background: var(--surface-alt); border: 1px solid var(--border); color: var(--text); padding: 7px 14px; border-radius: 6px; font-size: 0.88rem; }
+ .link-btn:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+ footer { text-align: center; color: var(--text-dim); font-size: 0.78rem; padding: 28px 24px; }
+  .theme-toggle { margin-left: auto; align-self: flex-start; background: var(--surface-alt); border: 1px solid var(--border); color: var(--text-muted); width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease; padding: 0; }
+ .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+ .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+ .theme-toggle .icon-sun { display: none; }
+ [data-theme="light"] .theme-toggle .icon-moon { display: none; }
+ [data-theme="light"] .theme-toggle .icon-sun { display: inline; }
+</style>
+
+ <script>(function(){try{var t=localStorage.getItem("theme");var p=t||(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");if(p==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}})();</script>
 </head>
 <body>
  <header>
@@ -70,6 +105,7 @@
  <span class="callsign">YL3AMD</span>
  </div>
  </div>
+   <button class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle light/dark theme" onclick="toggleTheme()"><span class="icon-moon" aria-hidden="true">🌙</span><span class="icon-sun" aria-hidden="true">☀️</span></button>
  </div>
  </header>
  <main>
@@ -93,7 +129,7 @@
  <div class="interests-grid">
  <div class="interest-card"><div class="icon"><img src="https://www.home-assistant.io/images/favicon-192x192.png" alt="Home Assistant"></div><div class="name">Home Assistant</div><div class="desc">Smart home automation &mdash; because who wants to remember to turn off the lights</div></div>
  <div class="interest-card"><div class="icon">&#129302;</div><div class="name">Arduino &amp; Raspberry Pi</div><div class="desc">Microcontrollers, single-board computers, sensors, and occasionally blinking LEDs</div></div>
- <div class="interest-card"><div class="icon">&#128225;</div><div class="name">Ham Radio</div><div class="desc">Licensed amateur radio operator &mdash; call sign <strong style="color:#e6edf3">YL3AMD</strong></div></div>
+ <div class="interest-card"><div class="icon">&#128225;</div><div class="name">Ham Radio</div><div class="desc">Licensed amateur radio operator &mdash; call sign <strong style="color:var(--text-strong)">YL3AMD</strong></div></div>
  <div class="interest-card"><div class="icon">&#9992;&#65039;</div><div class="name">Flightradar24</div><div class="desc">ADS-B feeder &mdash; contributing live aircraft data to the network</div></div>
  <div class="interest-card"><div class="icon">&#128247;</div><div class="name">Photography</div><div class="desc">Mostly street and travel &mdash; Nikon in hand, looking for the right light</div></div>
  <div class="interest-card" title="There is no dark side in the moon, really. Matter of fact, it's all dark. The only thing that makes it look light is the sun."><div class="icon">&#127925;</div><div class="name">Music &amp; Vinyl</div><div class="desc">Analogue sound in a digital world. The crackle is a feature, not a bug</div></div>
@@ -138,5 +174,24 @@
  </section>
  </main>
  <footer><p>Dmitry Munda &middot; Riga, Latvia &middot; 2026</p></footer>
+
+ <script>
+  (function() {
+   var stored = null;
+   try { stored = localStorage.getItem("theme"); } catch (e) {}
+   var preferred = stored || (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+   if (preferred === "light") document.documentElement.setAttribute("data-theme", "light");
+  })();
+  function toggleTheme() {
+   var isLight = document.documentElement.getAttribute("data-theme") === "light";
+   if (isLight) {
+    document.documentElement.removeAttribute("data-theme");
+    try { localStorage.setItem("theme", "dark"); } catch (e) {}
+   } else {
+    document.documentElement.setAttribute("data-theme", "light");
+    try { localStorage.setItem("theme", "light"); } catch (e) {}
+   }
+  }
+ </script>
 </body>
 </html>
