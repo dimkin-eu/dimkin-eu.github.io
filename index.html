@@ -90,7 +90,7 @@
  [data-theme="light"] .theme-toggle .icon-sun { display: inline; }
 </style>
 
- <script>(function(){try{var t=localStorage.getItem("theme");var p=t||(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");if(p==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}})();</script>
+ <script>(function(){try{if(localStorage.getItem("theme")==="light")document.documentElement.setAttribute("data-theme","light");}catch(e){}})();</script>
 </head>
 <body>
  <header>
@@ -176,12 +176,6 @@
  <footer><p>Dmitry Munda &middot; Riga, Latvia &middot; 2026</p></footer>
 
  <script>
-  (function() {
-   var stored = null;
-   try { stored = localStorage.getItem("theme"); } catch (e) {}
-   var preferred = stored || (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
-   if (preferred === "light") document.documentElement.setAttribute("data-theme", "light");
-  })();
   function toggleTheme() {
    var isLight = document.documentElement.getAttribute("data-theme") === "light";
    if (isLight) {
